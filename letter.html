@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Letter</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<style>
+/* GENERAL */
+body{
+  margin:0;
+  font-family: Arial;
+  background:white;
+  color:white;
+  text-align:center;
+}
+
+header{
+  background:rgba(0,0,0,0.5);
+  padding:20px;
+}
+
+/* GLOW TITLE */
+.glow-title{
+  font-size:40px;
+  letter-spacing:3px;
+  color:goldenrod;
+  animation:glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+  from{
+    text-shadow:
+    0 0 10px goldenrod,
+    0 0 20px goldenrod,
+    0 0 30px goldenrod;
+  }
+  to{
+    text-shadow:
+    0 0 20px goldenrod,
+    0 0 30px goldenrod,
+    0 0 40px goldenrod;
+  }
+}
+
+nav a{
+  color:rgba(0,0,0,0.5);
+  margin:0 15px;
+  text-decoration:none;
+  font-size:18px;
+}
+
+nav a:hover{
+  color:goldenrod;
+}
+
+.hero{
+  height:90vh;
+  background:url("hero.jpg") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero-text{
+  background:rgba(0,0,0,0.5);
+  padding:40px;
+  border-radius:10px;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 25px;
+  background:goldenrod;
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+}
+
+.letter{
+  padding:60px;
+  max-width:700px;
+  margin:auto;
+  line-height:1.8;
+  font-size:18px;
+  background:rgba(255,255,255,0.05);
+  border-radius:15px;
+  color:goldenrod;
+}
+
+#letter-text{
+  white-space:pre-line;
+  font-style: italic;
+  color:goldenrod;
+  border-left:4px solid goldenrod;
+  padding-left:20px;
+  text-align: justify;
+  text-justify: inter-word;
+  line-height:1.9;
+  letter-spacing:0.5px;
+}
+
+.letter h2{
+  font-weight:700;
+  color:goldenrod;
+  letter-spacing:1px;
+  margin-bottom:20px;
+  text-shadow:
+  0 0 10px goldenrod,
+  0 0 20px goldenrod;
+}
+
+.final-line{
+  display:block;
+  margin-top:20px;
+  font-size:22px;
+  color:#FFD700;
+  font-weight:bold;
+  /* glow removed */
+}
+
+footer{
+  background:rgba(0,0,0,0.5);
+  padding:15px;
+  margin-top:40px;
+}
+</style>
+
+<body>
+
+<header>
+  <h2 id="typing"></h2>
+<script>
+const text = "Today Is All About You 🎂❤️";
+let index = 0;
+
+function typeEffect() {
+  if (index < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, 70);
+  }
+}
+
+typeEffect();
+</script>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="memories.html">Memories</a>
+  <a href="letter.html">My Letter</a>
+</nav>
+</header>
+
+<section class="letter">
+  <h2>A LETTER FOR YOU 💌</h2>
+
+  <p id="letter-text"></p>
+  <script>
+  const part1 = `Happy Birthday to the most amazing person in my life. 
+You are not just someone special to me, you are the reason behind many of my smiles. 
+
+Every moment with you feels beautiful, and every memory with you is something I will always treasure. 
+
+On your birthday I just want you to know how important you are to me. 
+
+Thank you for being in my life, for making my days brighter, and for being the person who understands me. 
+
+I wish your life is filled with happiness, success, love and endless smiles.\n\n`;
+
+  const part2 = "Happy Birthday my future ❤️";
+
+  let i = 0;
+
+  function typeLetter(){
+    if(i < part1.length){
+      document.getElementById("letter-text").innerHTML += part1.charAt(i);
+      i++;
+      setTimeout(typeLetter,30);
+    }else{
+      // Final line without glow
+      document.getElementById("letter-text").innerHTML += `<span class="final-line">${part2}</span>`;
+    }
+  }
+
+  typeLetter();
+  </script>
+
+</section>
+
+<footer>
+<p>Made with Love ❤️ | Happy Birthday KHUBAIB</p>
+</footer>
+
+</body>
+</html>

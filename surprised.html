@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Surprise 🎉</title>
+<style>
+/* BODY */
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  font-family:Segoe UI;
+  color:white;
+  background:url("img/img2.jpg") center/cover no-repeat;
+  overflow:hidden;
+  position:relative;
+}
+
+/* DARK OVERLAY */
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  top:0;
+  left:0;
+  z-index:0;
+}
+
+/* HEADER */
+header{
+  background:rgba(0,0,0,0.5);
+  padding:20px;
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
+
+header h2{
+  margin:0;
+  color:white;
+  font-size:28px;
+}
+
+/* NAVIGATION */
+nav a{
+  color:white;
+  margin:0 15px;
+  text-decoration:none;
+  font-size:18px;
+}
+
+nav a:hover{
+  color:goldenrod;
+}
+
+/* MAIN CONTENT */
+.main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
+
+/* POPUP STYLES */
+.popup{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%) scale(0);
+  background:rgba(0,0,0,0.8);
+  padding:30px 50px;
+  border-radius:15px;
+  text-align:center;
+  color:#FFD700;
+  font-size:36px;
+  font-weight:bold;
+  box-shadow:0 0 20px #FFD700;
+  z-index:10;
+  opacity:0;
+  transition:all 0.6s ease;
+}
+
+.popup.show{
+  transform:translate(-50%, -50%) scale(1);
+  opacity:1;
+}
+
+/* FIREWORKS SPARK */
+.firework{
+  position:absolute;
+  border-radius:50%;
+}
+
+/* BIRTHDAY MESSAGES */
+.birthday-msg{
+  font-size:42px;
+  color:#FFD700;
+  text-shadow:0 0 10px #FFD700,0 0 20px #FFD700;
+  margin:15px 0;
+}
+
+/* FOOTER */
+footer{
+  background:rgba(0,0,0,0.5);
+  padding:15px;
+  position:relative;
+  z-index:2;
+  text-align:center;
+  color:white;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+<h2 id="typing"></h2>
+<nav>
+<a href="index.html">Home</a>
+<a href="memories.html">Memories</a>
+<a href="letter.html">My Letter</a>
+</nav>
+</header>
+
+<!-- MAIN -->
+<div class="main">
+<audio autoplay loop>
+<source src="img/birthday.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Birthday Messages after popup -->
+<div id="birthdayMessages" style="display:none;">
+  <div class="birthday-msg">It's Your Birthday</div>
+  <div class="birthday-msg">Happy Birthday ❤️</div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>Made with Love ❤️ | Happy Birthday KHUBAIB</p>
+</footer>
+
+<!-- POPUP -->
+<div class="popup" id="birthdayPopup">
+  Today 7 April
+</div>
+
+<!-- FIREWORKS SCRIPT -->
+<script>
+const colors = ["#ff4d88","#FFD700","#00e5ff","#a855f7","#ff7a18"];
+function createFirework(){
+  const fw = document.createElement("div");
+  fw.style.position="absolute";
+  fw.style.top = Math.random()*100 + "vh";
+  fw.style.left = Math.random()*100 + "vw";
+  for(let i=0;i<20;i++){
+    const spark = document.createElement("div");
+    spark.style.position="absolute";
+    spark.style.width="6px";
+    spark.style.height="6px";
+    spark.style.borderRadius="50%";
+    spark.style.background = colors[Math.floor(Math.random()*colors.length)];
+    const angle = Math.random()*2*Math.PI;
+    const distance = Math.random()*100;
+    spark.animate([
+      {transform:"translate(0,0)", opacity:1},
+      {transform:`translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`, opacity:0}
+    ], {duration:1000, easing:"ease-out"});
+    fw.appendChild(spark);
+  }
+  document.body.appendChild(fw);
+  setTimeout(()=>{fw.remove();},1000);
+}
+setInterval(createFirework,600);
+</script>
+
+<!-- POPUP SCRIPT -->
+<script>
+// Typing effect for header
+const text = "Always Us ❤️";
+let index = 0;
+function typeEffect() {
+  if(index < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeEffect,70);
+  }
+}
+typeEffect();
+
+// Popup fade in/out
+const popup = document.getElementById("birthdayPopup");
+const messages = document.getElementById("birthdayMessages");
+
+setTimeout(()=>{
+  popup.classList.add("show");
+  setTimeout(()=>{
+    popup.classList.remove("show");
+    messages.style.display = "block";
+  },2500);
+},500);
+</script>
+
+</body>
+</html>

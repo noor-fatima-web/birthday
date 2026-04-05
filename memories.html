@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Memories</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<style>
+     body{
+margin:0;
+font-family: Arial;
+background:white;
+color:white;
+text-align:center;
+}
+
+header{
+background:rgba(0,0,0,0.5);
+padding:20px;
+}
+
+/* GLOW TITLE */
+
+.glow-title{
+font-size:40px;
+letter-spacing:3px;
+color:goldenrod;
+animation:glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+
+from{
+text-shadow:
+0 0 10px goldenrod,
+0 0 20px goldenrod,
+0 0 30px goldenrod;
+}
+
+to{
+text-shadow:
+0 0 20px goldenrod,
+0 0 30px goldenrod,
+0 0 40px goldenrod;
+}
+
+}
+
+
+nav a{
+color:white;
+margin:0 15px;
+text-decoration:none;
+font-size:18px;
+}
+
+nav a:hover{
+color:goldenrod;
+}
+
+.hero{
+height:90vh;
+background:url("hero.jpg") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.hero-text{
+background:rgba(0,0,0,0.5);
+padding:40px;
+border-radius:10px;
+}
+
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+background: goldenrod;
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+
+.memories{
+padding:50px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:30px;
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+.card p{
+margin-top:15px;
+  color: goldenrod;
+  font-style: italic;
+  font-size: 20px;
+    line-height: 1.6;
+
+}
+
+
+
+
+.letter{
+padding:60px;
+max-width:700px;
+margin:auto;
+line-height:1.8;
+}
+
+footer{
+background:rgba(0,0,0,0.5);
+padding:15px;
+margin-top:40px;
+}
+</style>
+
+<body>
+
+<header>
+<h2 id="typing"></h2>
+<script>
+const text = "HAPPY BORN DAY خان صاحب ❤️";
+let index = 0;
+
+function typeEffect() {
+  if (index < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, 70);
+  }
+}
+
+typeEffect();
+</script>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="memories.html">Memories</a>
+<a href="letter.html">My Letter</a>
+</nav>
+</header>
+
+
+
+<section class="memories">
+
+<h2>Our Beautiful Memories</h2>
+
+<div class="gallery">
+
+<div class="card">
+<img src="img/img.png">
+<p>I still remember this moment like it was yesterday…  
+Our first call, the beginning of us.  
+I never knew that one call could mean so much to my heart ❤️</p>
+</div>
+
+<div class="card">
+<img src="img/frist-picture.png">
+<p>Every love story is beautiful, but ours is my favorite
+  .....By your side is my favorite place to be 
+  Soulmate & best friend all in one❤️</p>
+</div>
+
+<div class="card">
+<img src="img/frist-gift.png">
+<p>A memory I will always keep
+  The best gifts are those that come from the heart. 
+  Thank you for this special first memory. 💖"
+"You know exactly how to make my heart smile.
+ Thank you for the wonderful surprise. 🥰
+</p>
+</div>
+
+
+
+</div>
+
+</section>
+
+
+<footer>
+<p>Made with Love ❤️ | Happy Birthday KHUBAIB</p>
+</footer>
+
+</body>
+</html>
